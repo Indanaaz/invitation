@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Undangan Pernikahan Richat & Indana</title>
+  <title>Undangan Pernikahan Richat & Indana | 2 Juni 2026</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
     html {
@@ -20,12 +20,12 @@
     }
     .animate-enter {
       opacity: 0;
-      transform: translateX(-50px);
+      transform: translateY(30px);
       transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     }
     .animate-enter-active {
       opacity: 1;
-      transform: translateX(0);
+      transform: translateY(0);
     }
     .countdown-box {
       background: rgba(255,255,255,0.8);
@@ -35,6 +35,46 @@
       font-family: monospace;
       font-size: 1.1rem;
       box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    .timeline {
+      border-left: 2px solid #e5e7eb;
+      padding-left: 1rem;
+    }
+    .timeline-entry {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    .timeline-entry::before {
+      content: '';
+      width: 12px;
+      height: 12px;
+      background: #facc15;
+      border-radius: 9999px;
+      position: absolute;
+      left: -0.7rem;
+      top: 0.25rem;
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    .fade-in-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .page-section {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+    }
+    @media (max-width: 768px) {
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.5rem; }
+      .countdown-box { font-size: 1rem; }
     }
   </style>
   <script>
@@ -48,7 +88,15 @@
       }, { threshold: 0.1 });
       document.querySelectorAll('.animate-enter').forEach(el => observer.observe(el));
 
-      // Countdown
+      const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in-visible');
+          }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+
       const countdownEl = document.getElementById('countdown');
       if (countdownEl) {
         const target = new Date("2026-06-02T00:00:00").getTime();
@@ -62,6 +110,10 @@
           countdownEl.innerHTML = `<div class='countdown-box'>${d} Hari ${h} Jam ${m} Menit ${s} Detik</div>`;
         }, 1000);
       }
+
+      document.getElementById('open-invitation').addEventListener('click', () => {
+        document.getElementById('main').scrollIntoView({ behavior: 'smooth' });
+      });
     });
   </script>
 </head>
@@ -71,45 +123,48 @@
     Your browser does not support the audio element.
   </audio>
 
-  <!-- Pembuka -->
-  <section class="min-h-screen flex flex-col justify-center items-center text-center bg-black bg-opacity-60 text-white animate-enter">
+  <!-- Pembuka Page -->
+  <section class="min-h-screen flex flex-col justify-center items-center text-center bg-black bg-opacity-60 text-white animate-enter page-section">
     <h2 class="text-xl mb-2 animate-pulse">Undangan Pernikahan</h2>
     <h1 class="text-4xl font-bold">Richat & Indana</h1>
     <p class="mt-4">2 Juni 2026</p>
     <div id="countdown" class="mt-2 text-lg"></div>
-    <button onclick="document.getElementById('main').scrollIntoView({ behavior: 'smooth' })" class="mt-6 px-6 py-2 bg-white text-black rounded-full shadow-lg hover:bg-gray-300 transition">Buka Undangan</button>
+    <button id="open-invitation" class="mt-6 px-6 py-2 bg-white text-black rounded-full shadow-lg hover:bg-gray-300 transition">Buka Undangan</button>
   </section>
 
-  <!-- Konten Utama -->
+  <!-- Konten Per Halaman -->
   <main id="main" class="bg-white bg-opacity-90">
 
-    <!-- Kisah Cinta -->
-    <section class="py-12 text-center animate-enter">
-      <h2 class="text-2xl font-semibold mb-8">Kisah Cinta Kami</h2>
-      <p class="max-w-xl mx-auto">Dimulai dari pertemuan tak terduga, berlanjut dalam kebersamaan, dan akhirnya kami memilih untuk melangkah bersama dalam ikatan suci pernikahan. Kami percaya, cinta ini adalah anugerah terbaik dari Tuhan.</p>
+    <section class="py-12 text-center animate-enter page-section">
+      <h2 class="text-2xl font-semibold mb-4">Selamat Datang</h2>
+      <p class="max-w-xl mx-auto fade-in">Dengan segala kerendahan hati, kami mengundang Bapak/Ibu/Saudara/i untuk hadir di hari bahagia kami.</p>
     </section>
 
-    <!-- Mempelai -->
-    <section class="py-12 text-center animate-enter">
-      <h2 class="text-2xl font-semibold mb-8">Mempelai</h2>
-      <div class="flex flex-col md:flex-row justify-center gap-12 items-center">
-        <div class="animate-enter">
-          <img src="assets/images/richat.jpg" alt="Richat" class="rounded-full w-40 h-40 object-cover mx-auto mb-4 shadow-md">
-          <h3 class="text-xl font-bold">Richat</h3>
-          <p>Putra dari Bapak ... & Ibu ...</p>
+    <section class="py-12 text-center animate-enter page-section">
+      <h2 class="text-2xl font-semibold mb-8">Kisah Cinta Kami</h2>
+      <div class="max-w-2xl mx-auto text-left timeline fade-in">
+        <div class="timeline-entry">
+          <h4 class="font-semibold">01 Januari 2022</h4>
+          <p>Pertama kali bertemu di acara komunitas.</p>
         </div>
-        <div class="animate-enter">
-          <img src="assets/images/indana.jpg" alt="Indana" class="rounded-full w-40 h-40 object-cover mx-auto mb-4 shadow-md">
-          <h3 class="text-xl font-bold">Indana</h3>
-          <p>Putri dari Bapak ... & Ibu ...</p>
+        <div class="timeline-entry">
+          <h4 class="font-semibold">14 Februari 2022</h4>
+          <p>Mulai saling mengenal lebih dalam.</p>
+        </div>
+        <div class="timeline-entry">
+          <h4 class="font-semibold">01 Mei 2023</h4>
+          <p>Menjalin hubungan serius.</p>
+        </div>
+        <div class="timeline-entry">
+          <h4 class="font-semibold">02 Juni 2026</h4>
+          <p>Melangkah ke jenjang pernikahan.</p>
         </div>
       </div>
     </section>
 
-    <!-- Rangkaian Acara -->
-    <section class="py-12 bg-yellow-50 text-center animate-enter">
+    <section class="py-12 bg-yellow-50 text-center animate-enter page-section">
       <h2 class="text-2xl font-semibold mb-4">Rangkaian Acara</h2>
-      <p class="mb-2 font-medium">Akad Nikah</p>
+      <p class="mb-2 font-medium fade-in">Akad Nikah</p>
       <p>Selasa, 2 Juni 2026 | 09.00 WIB</p>
       <p class="mt-4 font-medium">Resepsi</p>
       <p>Selasa, 2 Juni 2026 | 11.00 WIB - Selesai</p>
@@ -117,43 +172,40 @@
       <a href="https://maps.google.com" class="inline-block mt-4 px-4 py-2 bg-gray-800 text-white rounded-full shadow hover:bg-gray-700 transition">Lihat Lokasi</a>
     </section>
 
-    <!-- Galeri -->
-    <section class="py-12 text-center animate-enter">
+    <section class="py-12 text-center animate-enter page-section">
       <h2 class="text-2xl font-semibold mb-8">Galeri Kenangan</h2>
       <div class="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
-        <img src="assets/images/foto1.jpg" class="rounded shadow transform hover:scale-105 transition duration-500" />
-        <img src="assets/images/foto2.jpg" class="rounded shadow transform hover:scale-105 transition duration-500" />
-        <img src="assets/images/foto3.jpg" class="rounded shadow transform hover:scale-105 transition duration-500" />
-        <img src="assets/images/foto4.jpg" class="rounded shadow col-span-2 md:col-span-3 transform hover:scale-105 transition duration-500" />
-        <img src="assets/images/foto5.jpg" class="rounded shadow transform hover:scale-105 transition duration-500" />
-        <img src="assets/images/foto6.jpg" class="rounded shadow transform hover:scale-105 transition duration-500" />
-        <img src="assets/images/foto7.jpg" class="rounded shadow transform hover:scale-105 transition duration-500" />
+        <img src="assets/images/foto1.jpg" class="rounded shadow transform hover:scale-105 transition duration-500 fade-in" />
+        <img src="assets/images/foto2.jpg" class="rounded shadow transform hover:scale-105 transition duration-500 fade-in" />
+        <img src="assets/images/foto3.jpg" class="rounded shadow transform hover:scale-105 transition duration-500 fade-in" />
+        <img src="assets/images/foto4.jpg" class="rounded shadow col-span-2 md:col-span-3 transform hover:scale-105 transition duration-500 fade-in" />
+        <img src="assets/images/foto5.jpg" class="rounded shadow transform hover:scale-105 transition duration-500 fade-in" />
+        <img src="assets/images/foto6.jpg" class="rounded shadow transform hover:scale-105 transition duration-500 fade-in" />
+        <img src="assets/images/foto7.jpg" class="rounded shadow transform hover:scale-105 transition duration-500 fade-in" />
       </div>
     </section>
 
-    <!-- Amplop Digital -->
-    <section class="py-12 bg-yellow-100 text-center animate-enter">
+    <section class="py-12 bg-yellow-100 text-center animate-enter page-section">
       <h2 class="text-2xl font-semibold mb-4">Amplop Digital</h2>
       <p class="mb-4">Silakan kirim tanda kasih melalui rekening atau QR berikut:</p>
-      <img src="assets/qr-code.png" alt="QR Code" class="mx-auto w-40 h-40 mb-2 animate-pulse">
+      <img src="assets/qr-code.png" alt="QR Code" class="mx-auto w-40 h-40 mb-2 animate-pulse fade-in">
       <p>BNI - 1234567890 - a.n. Richat & Indana</p>
     </section>
 
-    <!-- Ucapan -->
-    <section class="py-12 text-center animate-enter">
+    <section class="py-12 text-center animate-enter page-section">
       <h2 class="text-2xl font-semibold mb-4">Ucapan & Doa</h2>
-      <form action="https://formspree.io/f/your-id" method="POST" class="max-w-md mx-auto">
+      <form action="https://formspree.io/f/your-id" method="POST" class="max-w-md mx-auto fade-in">
         <input type="text" name="nama" placeholder="Nama Anda" class="w-full p-2 border mb-2 rounded" required>
         <textarea name="pesan" placeholder="Ucapan / Doa" class="w-full p-2 border mb-2 rounded" rows="4" required></textarea>
         <button type="submit" class="px-4 py-2 bg-black text-white rounded shadow hover:bg-gray-800 transition">Kirim</button>
       </form>
     </section>
 
-    <!-- Penutup -->
-    <section class="py-12 bg-gray-900 text-white text-center animate-enter">
-      <h2 class="text-xl font-light mb-2">Satu cinta, dua hati, dalam ikatan suci.</h2>
+    <section class="py-12 bg-gray-900 text-white text-center animate-enter page-section">
+      <h2 class="text-xl font-light mb-2 fade-in">Satu cinta, dua hati, dalam ikatan suci.</h2>
       <p class="text-sm">Sampai jumpa di hari bahagia kami – 02.06.2026</p>
     </section>
+
   </main>
 </body>
 </html>
