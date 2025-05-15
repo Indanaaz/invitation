@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Undangan Pernikahan Richat & Indana</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-image: url('assets/images/batik-bg.jpg');
+      background-size: cover;
+      background-attachment: fixed;
+    }
+  </style>
+</head>
+<body class="text-gray-800">
+
+  <!-- Pembuka -->
+  <section class="min-h-screen flex flex-col justify-center items-center text-center bg-black bg-opacity-60 text-white">
+    <h2 class="text-xl mb-2">Undangan Pernikahan</h2>
+    <h1 class="text-4xl font-bold">Richat & Indana</h1>
+    <p class="mt-4">2 Juni 2026</p>
+    <button onclick="document.getElementById('main').scrollIntoView({ behavior: 'smooth' })" class="mt-6 px-6 py-2 bg-white text-black rounded-full">Buka Undangan</button>
+  </section>
+
+  <!-- Konten Utama -->
+  <main id="main" class="bg-white bg-opacity-90">
+
+    <!-- Profil Mempelai -->
+    <section class="py-12 text-center">
+      <h2 class="text-2xl font-semibold mb-8">Mempelai</h2>
+      <div class="flex flex-col md:flex-row justify-center gap-12">
+        <div>
+          <img src="assets/images/richat.jpg" alt="Richat" class="rounded-full w-40 h-40 object-cover mx-auto mb-4">
+          <h3 class="text-xl font-bold">Richat</h3>
+          <p>Putra dari Bapak ... & Ibu ...</p>
+        </div>
+        <div>
+          <img src="assets/images/indana.jpg" alt="Indana" class="rounded-full w-40 h-40 object-cover mx-auto mb-4">
+          <h3 class="text-xl font-bold">Indana</h3>
+          <p>Putri dari Bapak ... & Ibu ...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Acara -->
+    <section class="py-12 bg-yellow-50 text-center">
+      <h2 class="text-2xl font-semibold mb-4">Rangkaian Acara</h2>
+      <p class="mb-2 font-medium">Akad Nikah</p>
+      <p>Selasa, 2 Juni 2026 | 09.00 WIB</p>
+      <p class="mt-4 font-medium">Resepsi</p>
+      <p>Selasa, 2 Juni 2026 | 11.00 WIB - Selesai</p>
+      <p class="mt-4">Graha Kartini, [Alamat lengkap]</p>
+      <a href="https://maps.google.com" class="inline-block mt-4 px-4 py-2 bg-gray-800 text-white rounded-full">Lihat Lokasi</a>
+    </section>
+
+    <!-- Galeri -->
+    <section class="py-12 text-center">
+      <h2 class="text-2xl font-semibold mb-8">Galeri Kenangan</h2>
+      <div class="grid grid-cols-3 gap-4 max-w-4xl mx-auto">
+        <img src="assets/images/foto1.jpg" class="rounded shadow" />
+        <img src="assets/images/foto2.jpg" class="rounded shadow" />
+        <img src="assets/images/foto3.jpg" class="rounded shadow" />
+        <img src="assets/images/foto4.jpg" class="rounded shadow col-span-3" />
+        <img src="assets/images/foto5.jpg" class="rounded shadow" />
+        <img src="assets/images/foto6.jpg" class="rounded shadow" />
+        <img src="assets/images/foto7.jpg" class="rounded shadow" />
+      </div>
+    </section>
+
+    <!-- Amplop Digital -->
+    <section class="py-12 bg-yellow-100 text-center">
+      <h2 class="text-2xl font-semibold mb-4">Amplop Digital</h2>
+      <p class="mb-4">Silakan kirim tanda kasih melalui rekening atau QR berikut:</p>
+      <img src="assets/qr-code.png" alt="QR Code" class="mx-auto w-40 h-40 mb-2">
+      <p>BNI - 1234567890 - a.n. Richat & Indana</p>
+    </section>
+
+    <!-- Ucapan -->
+    <section class="py-12 text-center">
+      <h2 class="text-2xl font-semibold mb-4">Ucapan & Doa</h2>
+      <form action="https://formspree.io/f/your-id" method="POST" class="max-w-md mx-auto">
+        <input type="text" name="nama" placeholder="Nama Anda" class="w-full p-2 border mb-2" required>
+        <textarea name="pesan" placeholder="Ucapan / Doa" class="w-full p-2 border mb-2" rows="4" required></textarea>
+        <button type="submit" class="px-4 py-2 bg-black text-white rounded">Kirim</button>
+      </form>
+    </section>
+
+    <!-- Penutup -->
+    <section class="py-12 bg-gray-900 text-white text-center">
+      <h2 class="text-xl font-light mb-2">Satu cinta, dua hati, dalam ikatan suci.</h2>
+      <p class="text-sm">Sampai jumpa di hari bahagia kami – 02.06.2026</p>
+    </section>
+  </main>
+</body>
+</html>
