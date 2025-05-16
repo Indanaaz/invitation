@@ -127,14 +127,17 @@
             max-width: 1200px;
         }
 
-        .couple-item:first-child {
-            animation: slideLeft 1s ease forwards;
+        .couple-item {
             opacity: 0;
+            transition: all 1s ease;
         }
 
-        .couple-item:last-child {
+        .couple-item.active:first-child {
+            animation: slideLeft 1s ease forwards;
+        }
+
+        .couple-item.active:last-child {
             animation: slideRight 1s ease forwards;
-            opacity: 0;
         }
 
         .photo-circle {
@@ -181,7 +184,6 @@
             border-radius: 20px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.03);
             background: #ffffff;
-            animation: slideUp 1s ease forwards;
             opacity: 0;
             transform: translateY(30px);
             transition: all 1s ease;
@@ -190,6 +192,7 @@
         .details-card.active {
             opacity: 1;
             transform: translateY(0);
+            animation: slideUp 1s ease forwards;
         }
 
         .countdown {
@@ -208,13 +211,14 @@
             min-width: clamp(80px, 20vw, 120px);
             color: #445566;
             box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            animation: fadeIn 1s ease forwards;
+            opacity: 0;
+            transition: all 1s ease;
         }
 
-        .countdown-item:nth-child(1) { animation: slideLeft 1s ease 0.2s forwards; opacity: 0; }
-        .countdown-item:nth-child(2) { animation: slideLeft 1s ease 0.4s forwards; opacity: 0; }
-        .countdown-item:nth-child(3) { animation: slideRight 1s ease 0.6s forwards; opacity: 0; }
-        .countdown-item:nth-child(4) { animation: slideRight 1s ease 0.8s forwards; opacity: 0; }
+        .countdown-item.active:nth-child(1) { animation: slideLeft 1s ease 0.2s forwards; }
+        .countdown-item.active:nth-child(2) { animation: slideLeft 1s ease 0.4s forwards; }
+        .countdown-item.active:nth-child(3) { animation: slideRight 1s ease 0.6s forwards; }
+        .countdown-item.active:nth-child(4) { animation: slideRight 1s ease 0.8s forwards; }
 
         .countdown-item h3 {
             font-size: clamp(1.5rem, 3vw, 2.5rem);
@@ -238,13 +242,14 @@
 
         .gallery-item {
             opacity: 0;
+            transition: all 1s ease;
         }
 
-        .gallery-item:nth-child(odd) {
+        .gallery-item.active:nth-child(odd) {
             animation: slideLeft 1s ease forwards;
         }
 
-        .gallery-item:nth-child(even) {
+        .gallery-item.active:nth-child(even) {
             animation: slideRight 1s ease forwards;
         }
 
@@ -287,11 +292,11 @@
             opacity: 0;
         }
 
-        .bank-card:first-child {
+        .bank-card.active:first-child {
             animation: slideLeft 1s ease forwards;
         }
 
-        .bank-card:last-child {
+        .bank-card.active:last-child {
             animation: slideRight 1s ease forwards;
         }
 
@@ -307,13 +312,21 @@
         }
 
         .doa-section h2 {
-            animation: slideLeft 1s ease forwards;
             opacity: 0;
+            transition: all 1s ease;
+        }
+
+        .doa-section h2.active {
+            animation: slideLeft 1s ease forwards;
         }
 
         .doa-section p {
-            animation: slideRight 1s ease forwards;
             opacity: 0;
+            transition: all 1s ease;
+        }
+
+        .doa-section p.active {
+            animation: slideRight 1s ease forwards;
         }
 
         h2 {
@@ -321,8 +334,12 @@
             font-size: clamp(2rem, 4vw, 2.5rem);
             margin-bottom: 30px;
             opacity: 0;
-            animation: slideUp 1s ease forwards;
+            transition: all 1s ease;
             color: #445566;
+        }
+
+        h2.active {
+            animation: slideUp 1s ease forwards;
         }
 
         @media (max-width: 768px) {
@@ -353,8 +370,11 @@
             cursor: pointer;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
-            animation: slideRight 1s ease forwards;
             opacity: 0;
+        }
+
+        #music-control.active {
+            animation: slideRight 1s ease forwards;
         }
 
         #music-control:hover {
@@ -534,7 +554,7 @@
 
         const observerOptions = {
             threshold: 0.2,
-            rootMargin: '0px 0px -50px 0px'
+            rootMargin: '0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
