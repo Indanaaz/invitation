@@ -16,8 +16,17 @@
 
         body {
             background-color: #ffffff;
+        }
+
+        .fade-in {
             opacity: 0;
-            animation: fadeIn 2s forwards;
+            animation: fadeIn 1.5s ease forwards;
+        }
+
+        .slide-up {
+            opacity: 0;
+            transform: translateY(50px);
+            animation: slideUp 1s ease forwards;
         }
 
         @keyframes fadeIn {
@@ -25,9 +34,20 @@
             to { opacity: 1; }
         }
 
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1601100192734-14525c4688c5');
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -43,12 +63,16 @@
             margin-bottom: 20px;
             font-family: 'Playfair Display', serif;
             letter-spacing: 2px;
+            animation: fadeIn 2s ease 0.5s forwards;
+            opacity: 0;
         }
 
         .hero p {
             font-size: 1.4rem;
             letter-spacing: 1px;
             line-height: 1.8;
+            animation: slideUp 1.5s ease 1s forwards;
+            opacity: 0;
         }
 
         .couple-section {
@@ -112,6 +136,7 @@
             min-width: 120px;
             color: white;
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            animation: fadeIn 1s ease forwards;
         }
 
         .countdown-item h3 {
@@ -183,6 +208,8 @@
             font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
             margin-bottom: 30px;
+            opacity: 0;
+            animation: slideUp 1s ease forwards;
         }
 
         @media (max-width: 768px) {
@@ -218,10 +245,21 @@
         #music-control:hover {
             transform: scale(1.1);
         }
+
+        .section-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease;
+        }
+
+        .section-animate.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body>
-    <audio id="bg-music" loop>
+    <audio id="bg-music" loop autoplay>
         <source src="videoplayback.weba" type="audio/webm">
     </audio>
     <div id="music-control" onclick="toggleMusic()">
@@ -236,28 +274,28 @@
         </div>
     </div>
 
-    <section class="couple-section">
+    <section class="couple-section section-animate">
         <h2>The Happy Couple</h2>
         <div class="couple-photos">
             <div class="photo-circle">
-                <img src="bride-photo.jpg" alt="Putri Ayu Setyowati, S.Pd">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Putri Ayu Setyowati, S.Pd">
                 <h3>Putri Ayu Setyowati, S.Pd</h3>
                 <p>Daughter of Mr. Setyo Widodo & Mrs. Sri Wahyuni</p>
             </div>
             <div class="photo-circle">
-                <img src="groom-photo.jpg" alt="Putra Bagus Prakoso, S.T">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Putra Bagus Prakoso, S.T">
                 <h3>Putra Bagus Prakoso, S.T</h3>
                 <p>Son of Mr. Bambang Sutrisno & Mrs. Endang Susilowati</p>
             </div>
         </div>
     </section>
 
-    <section class="doa-section">
+    <section class="doa-section section-animate">
         <h2>Our Prayer</h2>
         <p>"May our love story continue happily ever after"</p>
     </section>
 
-    <section class="details-section">
+    <section class="details-section section-animate">
         <div class="details-card">
             <h2>Wedding Details</h2>
             
@@ -298,25 +336,25 @@
         </div>
     </section>
 
-    <section class="gallery-section">
+    <section class="gallery-section section-animate">
         <h2>Our Love Story</h2>
         <div class="gallery-grid">
             <div class="gallery-item">
-                <img src="prewed1.jpg" alt="Our Moments 1">
+                <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Our Moments 1">
             </div>
             <div class="gallery-item">
-                <img src="prewed2.jpg" alt="Our Moments 2">
+                <img src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Our Moments 2">
             </div>
             <div class="gallery-item">
-                <img src="prewed3.jpg" alt="Our Moments 3">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Our Moments 3">
             </div>
             <div class="gallery-item">
-                <img src="prewed4.jpg" alt="Our Moments 4">
+                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Our Moments 4">
             </div>
         </div>
     </section>
 
-    <section class="gift-section">
+    <section class="gift-section section-animate">
         <h2>Wedding Gift</h2>
         <p>Your prayers and blessings are our greatest gift. However, if you wish to send a gift, you may do so through:</p>
         
@@ -357,7 +395,7 @@
 
         // Music Control
         const music = document.getElementById('bg-music');
-        let isPlaying = false;
+        let isPlaying = true;
 
         function toggleMusic() {
             if (isPlaying) {
@@ -368,13 +406,29 @@
             isPlaying = !isPlaying;
         }
 
-        // Start music on first interaction
-        document.body.addEventListener('click', function() {
-            if (!isPlaying) {
-                music.play();
-                isPlaying = true;
-            }
-        }, { once: true });
+        // Scroll Animation
+        const sections = document.querySelectorAll('.section-animate');
+
+        const observerOptions = {
+            threshold: 0.2
+        };
+
+        const observer = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Auto play music on load
+        window.addEventListener('load', function() {
+            music.play();
+        });
     </script>
 </body>
 </html>
