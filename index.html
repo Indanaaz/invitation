@@ -82,7 +82,7 @@
 
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -100,7 +100,7 @@
             letter-spacing: 2px;
             animation: fadeIn 2s ease 0.5s forwards;
             opacity: 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .hero p {
@@ -109,13 +109,13 @@
             line-height: 1.8;
             animation: slideUp 1.5s ease 1s forwards;
             opacity: 0;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
         }
 
         .couple-section {
             padding: 120px 5vw;
             text-align: center;
-            background: #f8f9fa;
+            background: #f5f8fa;
         }
 
         .couple-photos {
@@ -147,7 +147,7 @@
             height: min(250px, 90vw);
             border-radius: 50%;
             object-fit: cover;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
             transition: transform 0.3s ease;
             margin-bottom: 20px;
         }
@@ -158,12 +158,12 @@
 
         .photo-circle h3 {
             margin: 15px 0 10px 0;
-            color: #333;
+            color: #445566;
             font-size: clamp(1rem, 1.5vw, 1.2rem);
         }
 
         .photo-circle p {
-            color: #666;
+            color: #778899;
             font-size: clamp(0.8rem, 1.2vw, 0.9rem);
             line-height: 1.4;
         }
@@ -179,10 +179,17 @@
             margin: 0 auto;
             padding: clamp(20px, 5vw, 50px);
             border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.03);
             background: #ffffff;
             animation: slideUp 1s ease forwards;
             opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease;
+        }
+
+        .details-card.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .countdown {
@@ -195,12 +202,12 @@
         }
 
         .countdown-item {
-            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+            background: linear-gradient(135deg, #c9d6df 0%, #a3b9cc 100%);
             padding: clamp(15px, 3vw, 25px);
             border-radius: 15px;
             min-width: clamp(80px, 20vw, 120px);
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            color: #445566;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
             animation: fadeIn 1s ease forwards;
         }
 
@@ -217,7 +224,7 @@
         .gallery-section {
             padding: 80px 5vw;
             text-align: center;
-            background: #f8f9fa;
+            background: #f5f8fa;
         }
 
         .gallery-grid {
@@ -247,7 +254,7 @@
             object-fit: cover;
             border-radius: 15px;
             transition: transform 0.3s ease;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
         }
 
         .gallery-item img:hover {
@@ -271,11 +278,11 @@
         }
 
         .bank-card {
-            background: #f8f9fa;
+            background: #f5f8fa;
             padding: clamp(20px, 4vw, 30px);
             border-radius: 15px;
             min-width: min(320px, 90vw);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.03);
             transition: transform 0.3s ease;
             opacity: 0;
         }
@@ -295,8 +302,8 @@
         .doa-section {
             padding: 80px 5vw;
             text-align: center;
-            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
-            color: white;
+            background: linear-gradient(135deg, #c9d6df 0%, #a3b9cc 100%);
+            color: #445566;
         }
 
         .doa-section h2 {
@@ -315,6 +322,7 @@
             margin-bottom: 30px;
             opacity: 0;
             animation: slideUp 1s ease forwards;
+            color: #445566;
         }
 
         @media (max-width: 768px) {
@@ -338,12 +346,12 @@
             bottom: 30px;
             right: 30px;
             z-index: 1000;
-            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
-            color: white;
+            background: linear-gradient(135deg, #c9d6df 0%, #a3b9cc 100%);
+            color: #445566;
             padding: 15px;
             border-radius: 50%;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
             animation: slideRight 1s ease forwards;
             opacity: 0;
@@ -529,35 +537,31 @@
             rootMargin: '0px 0px -50px 0px'
         };
 
-        const observer = new IntersectionObserver(function(entries, observer) {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
+                    // Add active class to the section
                     entry.target.classList.add('active');
+                    
+                    // Add active class to all elements that need animation within the section
+                    const animatedElements = entry.target.querySelectorAll('h2, p, .couple-item, .countdown-item, .gallery-item, .bank-card');
+                    animatedElements.forEach(el => el.classList.add('active'));
                 }
             });
         }, observerOptions);
 
-        sections.forEach(section => {
+        // Observe all sections and the music control
+        document.querySelectorAll('section, #music-control').forEach(section => {
             observer.observe(section);
-        });
-
-        // Play music immediately when possible
-        document.addEventListener('DOMContentLoaded', function() {
-            // Try to play music
-            let playAttempt = setInterval(() => {
-                music.play()
-                .then(() => {
-                    clearInterval(playAttempt);
-                })
-                .catch(e => {
-                    console.log("Auto-play prevented. Please interact with the page first.");
-                });
-            }, 3000);
         });
 
         // Handle user interaction to start music
         document.body.addEventListener('click', function() {
-            music.play().catch(e => console.log(e));
+            if (!isPlaying) {
+                music.play().then(() => {
+                    isPlaying = true;
+                }).catch(e => console.log("Playback prevented. Please use the music control button."));
+            }
         }, { once: true });
     </script>
 </body>
