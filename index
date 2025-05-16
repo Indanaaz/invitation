@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Wedding Invitation - Sarah & John</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f9f7f7;
+        }
+
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+        }
+
+        .couple-section {
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .couple-photos {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin: 50px 0;
+            flex-wrap: wrap;
+        }
+
+        .photo-circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .photo-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .details-section {
+            background-color: #fff;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .details-card {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .countdown {
+            margin: 50px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .countdown-item {
+            background-color: #f9f7f7;
+            padding: 20px;
+            border-radius: 10px;
+            min-width: 100px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .countdown-item h3 {
+            font-size: 2rem;
+            color: #333;
+        }
+
+        .rsvp-section {
+            padding: 100px 20px;
+            text-align: center;
+            background-color: #f9f7f7;
+        }
+
+        .rsvp-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        button {
+            background-color: #333;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 1.1rem;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        @media (max-width: 768px) {
+            .couple-photos {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Sarah & John</h1>
+            <p>We're getting married!</p>
+            <p>December 31, 2024</p>
+        </div>
+    </div>
+
+    <section class="couple-section">
+        <h2>The Happy Couple</h2>
+        <div class="couple-photos">
+            <div class="photo-circle">
+                <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=200&q=80" alt="Bride Sarah smiling" />
+            </div>
+            <div class="photo-circle">
+                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=80" alt="Groom John smiling" />
+            </div>
+        </div>
+        <p>Join us in celebrating our love story</p>
+    </section>
+
+    <section class="details-section">
+        <div class="details-card">
+            <h2>Wedding Details</h2>
+            <p>December 31, 2024</p>
+            <p>4:00 PM</p>
+            <p>Grand Ballroom, Luxury Hotel</p>
+            <p>123 Wedding Street, City</p>
+            
+            <div class="countdown">
+                <div class="countdown-item">
+                    <h3 id="days">00</h3>
+                    <p>Days</p>
+                </div>
+                <div class="countdown-item">
+                    <h3 id="hours">00</h3>
+                    <p>Hours</p>
+                </div>
+                <div class="countdown-item">
+                    <h3 id="minutes">00</h3>
+                    <p>Minutes</p>
+                </div>
+                <div class="countdown-item">
+                    <h3 id="seconds">00</h3>
+                    <p>Seconds</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="rsvp-section">
+        <h2>RSVP</h2>
+        <div class="rsvp-form">
+            <form>
+                <input type="text" placeholder="Your Name" required />
+                <input type="email" placeholder="Your Email" required />
+                <select required>
+                    <option value="">Will you attend?</option>
+                    <option value="yes">Yes, I will attend</option>
+                    <option value="no">Sorry, I can't make it</option>
+                </select>
+                <textarea placeholder="Leave a message for the couple"></textarea>
+                <button type="submit">Send RSVP</button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            const weddingDate = new Date('December 31, 2024 16:00:00').getTime();
+            const now = new Date().getTime();
+            let distance = weddingDate - now;
+
+            if (distance < 0) {
+                distance = 0; // Stop countdown after wedding date
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerHTML = days.toString().padStart(2, '0');
+            document.getElementById('hours').innerHTML = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').innerHTML = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').innerHTML = seconds.toString().padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
