@@ -16,6 +16,7 @@
 
         body {
             background-color: #ffffff;
+            overflow-x: hidden;
         }
 
         .fade-in {
@@ -27,6 +28,18 @@
             opacity: 0;
             transform: translateY(50px);
             animation: slideUp 1s ease forwards;
+        }
+
+        .slide-left {
+            opacity: 0;
+            transform: translateX(-100px);
+            animation: slideLeft 1s ease forwards;
+        }
+
+        .slide-right {
+            opacity: 0;
+            transform: translateX(100px);
+            animation: slideRight 1s ease forwards;
         }
 
         @keyframes fadeIn {
@@ -45,9 +58,31 @@
             }
         }
 
+        @keyframes slideLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -59,24 +94,26 @@
         }
 
         .hero h1 {
-            font-size: 4.5rem;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
             margin-bottom: 20px;
             font-family: 'Playfair Display', serif;
             letter-spacing: 2px;
             animation: fadeIn 2s ease 0.5s forwards;
             opacity: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
         .hero p {
-            font-size: 1.4rem;
+            font-size: clamp(1rem, 2vw, 1.4rem);
             letter-spacing: 1px;
             line-height: 1.8;
             animation: slideUp 1.5s ease 1s forwards;
             opacity: 0;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
         }
 
         .couple-section {
-            padding: 120px 20px;
+            padding: 120px 5vw;
             text-align: center;
             background: #f8f9fa;
         }
@@ -84,82 +121,129 @@
         .couple-photos {
             display: flex;
             justify-content: center;
-            gap: 80px;
-            margin: 50px 0;
+            gap: clamp(20px, 5vw, 80px);
+            margin: 50px auto;
+            flex-wrap: wrap;
+            max-width: 1200px;
+        }
+
+        .couple-item:first-child {
+            animation: slideLeft 1s ease forwards;
+            opacity: 0;
+        }
+
+        .couple-item:last-child {
+            animation: slideRight 1s ease forwards;
+            opacity: 0;
         }
 
         .photo-circle {
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .photo-circle:hover {
-            transform: scale(1.05);
+            width: min(250px, 90vw);
+            text-align: center;
         }
 
         .photo-circle img {
             width: 100%;
-            height: 100%;
+            height: min(250px, 90vw);
+            border-radius: 50%;
             object-fit: cover;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .photo-circle img:hover {
+            transform: scale(1.05);
+        }
+
+        .photo-circle h3 {
+            margin: 15px 0 10px 0;
+            color: #333;
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+        }
+
+        .photo-circle p {
+            color: #666;
+            font-size: clamp(0.8rem, 1.2vw, 0.9rem);
+            line-height: 1.4;
         }
 
         .details-section {
             background-color: #fff;
-            padding: 120px 20px;
+            padding: 120px 5vw;
             text-align: center;
         }
 
         .details-card {
             max-width: 900px;
             margin: 0 auto;
-            padding: 50px;
+            padding: clamp(20px, 5vw, 50px);
             border-radius: 20px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.05);
             background: #ffffff;
+            animation: slideUp 1s ease forwards;
+            opacity: 0;
         }
 
         .countdown {
-            margin: 50px 0;
+            margin: 50px auto;
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: clamp(10px, 3vw, 30px);
+            flex-wrap: wrap;
+            max-width: 800px;
         }
 
         .countdown-item {
             background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
-            padding: 25px;
+            padding: clamp(15px, 3vw, 25px);
             border-radius: 15px;
-            min-width: 120px;
+            min-width: clamp(80px, 20vw, 120px);
             color: white;
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
             animation: fadeIn 1s ease forwards;
         }
 
+        .countdown-item:nth-child(1) { animation: slideLeft 1s ease 0.2s forwards; opacity: 0; }
+        .countdown-item:nth-child(2) { animation: slideLeft 1s ease 0.4s forwards; opacity: 0; }
+        .countdown-item:nth-child(3) { animation: slideRight 1s ease 0.6s forwards; opacity: 0; }
+        .countdown-item:nth-child(4) { animation: slideRight 1s ease 0.8s forwards; opacity: 0; }
+
         .countdown-item h3 {
-            font-size: 2.5rem;
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
             font-weight: 600;
         }
 
         .gallery-section {
-            padding: 80px 20px;
+            padding: 80px 5vw;
             text-align: center;
             background: #f8f9fa;
         }
 
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            padding: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+            gap: clamp(15px, 3vw, 30px);
+            padding: clamp(20px, 4vw, 40px);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            opacity: 0;
+        }
+
+        .gallery-item:nth-child(odd) {
+            animation: slideLeft 1s ease forwards;
+        }
+
+        .gallery-item:nth-child(even) {
+            animation: slideRight 1s ease forwards;
         }
 
         .gallery-item img {
             width: 100%;
-            height: 300px;
+            height: clamp(200px, 40vw, 300px);
             object-fit: cover;
             border-radius: 15px;
             transition: transform 0.3s ease;
@@ -171,7 +255,7 @@
         }
 
         .gift-section {
-            padding: 80px 20px;
+            padding: 80px 5vw;
             text-align: center;
             background-color: #ffffff;
         }
@@ -179,18 +263,29 @@
         .bank-details {
             display: flex;
             justify-content: center;
-            gap: 40px;
+            gap: clamp(20px, 4vw, 40px);
             flex-wrap: wrap;
             margin-top: 40px;
+            max-width: 1200px;
+            margin: 40px auto 0;
         }
 
         .bank-card {
             background: #f8f9fa;
-            padding: 30px;
+            padding: clamp(20px, 4vw, 30px);
             border-radius: 15px;
-            min-width: 320px;
+            min-width: min(320px, 90vw);
             box-shadow: 0 10px 20px rgba(0,0,0,0.05);
             transition: transform 0.3s ease;
+            opacity: 0;
+        }
+
+        .bank-card:first-child {
+            animation: slideLeft 1s ease forwards;
+        }
+
+        .bank-card:last-child {
+            animation: slideRight 1s ease forwards;
         }
 
         .bank-card:hover {
@@ -198,15 +293,25 @@
         }
 
         .doa-section {
-            padding: 80px 20px;
+            padding: 80px 5vw;
             text-align: center;
             background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
             color: white;
         }
 
+        .doa-section h2 {
+            animation: slideLeft 1s ease forwards;
+            opacity: 0;
+        }
+
+        .doa-section p {
+            animation: slideRight 1s ease forwards;
+            opacity: 0;
+        }
+
         h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 4vw, 2.5rem);
             margin-bottom: 30px;
             opacity: 0;
             animation: slideUp 1s ease forwards;
@@ -219,12 +324,12 @@
                 gap: 40px;
             }
             
-            .hero h1 {
-                font-size: 3rem;
+            .countdown {
+                gap: 15px;
             }
 
-            .countdown {
-                flex-wrap: wrap;
+            .bank-details {
+                padding: 0 20px;
             }
         }
 
@@ -240,6 +345,8 @@
             cursor: pointer;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             transition: transform 0.3s ease;
+            animation: slideRight 1s ease forwards;
+            opacity: 0;
         }
 
         #music-control:hover {
@@ -259,7 +366,7 @@
     </style>
 </head>
 <body>
-    <audio id="bg-music" loop autoplay>
+    <audio id="bg-music" loop>
         <source src="videoplayback.weba" type="audio/webm">
     </audio>
     <div id="music-control" onclick="toggleMusic()">
@@ -277,15 +384,23 @@
     <section class="couple-section section-animate">
         <h2>The Happy Couple</h2>
         <div class="couple-photos">
-            <div class="photo-circle">
-                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Putri Ayu Setyowati, S.Pd">
-                <h3>Putri Ayu Setyowati, S.Pd</h3>
-                <p>Daughter of Mr. Setyo Widodo & Mrs. Sri Wahyuni</p>
+            <div class="couple-item">
+                <div class="photo-circle">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Putri Ayu Setyowati, S.Pd">
+                </div>
+                <div class="couple-info">
+                    <h3>Putri Ayu Setyowati, S.Pd</h3>
+                    <p>Daughter of Mr. Setyo Widodo & Mrs. Sri Wahyuni</p>
+                </div>
             </div>
-            <div class="photo-circle">
-                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Putra Bagus Prakoso, S.T">
-                <h3>Putra Bagus Prakoso, S.T</h3>
-                <p>Son of Mr. Bambang Sutrisno & Mrs. Endang Susilowati</p>
+            <div class="couple-item">
+                <div class="photo-circle">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Putra Bagus Prakoso, S.T">
+                </div>
+                <div class="couple-info">
+                    <h3>Putra Bagus Prakoso, S.T</h3>
+                    <p>Son of Mr. Bambang Sutrisno & Mrs. Endang Susilowati</p>
+                </div>
             </div>
         </div>
     </section>
@@ -406,11 +521,12 @@
             isPlaying = !isPlaying;
         }
 
-        // Scroll Animation
+        // Scroll Animation with Intersection Observer
         const sections = document.querySelectorAll('.section-animate');
 
         const observerOptions = {
-            threshold: 0.2
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
         };
 
         const observer = new IntersectionObserver(function(entries, observer) {
@@ -425,10 +541,24 @@
             observer.observe(section);
         });
 
-        // Auto play music on load
-        window.addEventListener('load', function() {
-            music.play();
+        // Play music immediately when possible
+        document.addEventListener('DOMContentLoaded', function() {
+            // Try to play music
+            let playAttempt = setInterval(() => {
+                music.play()
+                .then(() => {
+                    clearInterval(playAttempt);
+                })
+                .catch(e => {
+                    console.log("Auto-play prevented. Please interact with the page first.");
+                });
+            }, 3000);
         });
+
+        // Handle user interaction to start music
+        document.body.addEventListener('click', function() {
+            music.play().catch(e => console.log(e));
+        }, { once: true });
     </script>
 </body>
 </html>
