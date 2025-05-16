@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Wedding Invitation - Sarah & John</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan - Putri & Putra</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
@@ -14,12 +16,18 @@
 
         body {
             background-color: #f9f7f7;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-                url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1350&q=80');
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1601100192734-14525c4688c5');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -32,6 +40,7 @@
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 20px;
+            font-family: 'Times New Roman', serif;
         }
 
         .hero p {
@@ -41,6 +50,7 @@
         .couple-section {
             padding: 100px 20px;
             text-align: center;
+            background: url('batik-pattern.png');
         }
 
         .couple-photos {
@@ -48,7 +58,6 @@
             justify-content: center;
             gap: 50px;
             margin: 50px 0;
-            flex-wrap: wrap;
         }
 
         .photo-circle {
@@ -56,7 +65,7 @@
             height: 200px;
             border-radius: 50%;
             overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border: 5px solid #8B4513;
         }
 
         .photo-circle img {
@@ -72,11 +81,13 @@
         }
 
         .details-card {
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            background: url('batik-border.png');
+            background-size: contain;
         }
 
         .countdown {
@@ -84,55 +95,65 @@
             display: flex;
             justify-content: center;
             gap: 20px;
-            flex-wrap: wrap;
         }
 
         .countdown-item {
-            background-color: #f9f7f7;
+            background-color: #8B4513;
             padding: 20px;
             border-radius: 10px;
             min-width: 100px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            color: white;
         }
 
         .countdown-item h3 {
             font-size: 2rem;
-            color: #333;
         }
 
-        .rsvp-section {
-            padding: 100px 20px;
+        .gallery-section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .gift-section {
+            padding: 50px 20px;
             text-align: center;
             background-color: #f9f7f7;
         }
 
-        .rsvp-form {
-            max-width: 500px;
-            margin: 0 auto;
+        .bank-details {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 30px;
         }
 
-        input, textarea, select {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
+        .bank-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            min-width: 300px;
         }
 
-        button {
-            background-color: #333;
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: 0.3s;
-            font-size: 1.1rem;
-        }
-
-        button:hover {
-            background-color: #555;
+        .doa-section {
+            padding: 50px 20px;
+            text-align: center;
+            background: #fff;
+            font-style: italic;
         }
 
         @media (max-width: 768px) {
@@ -145,100 +166,176 @@
                 font-size: 2.5rem;
             }
         }
+
+        #music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: #8B4513;
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
+    <audio id="bg-music" loop>
+        <source src="beautiful-in-white.mp3" type="audio/mpeg">
+    </audio>
+    <div id="music-control" onclick="toggleMusic()">
+        <i class="fas fa-music"></i>
+    </div>
+
     <div class="hero">
         <div class="hero-content">
-            <h1>Sarah & John</h1>
-            <p>We're getting married!</p>
-            <p>December 31, 2024</p>
+            <h1>Putri & Putra</h1>
+            <p>Kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri pernikahan kami</p>
+            <p>31 Desember 2024</p>
         </div>
     </div>
 
     <section class="couple-section">
-        <h2>The Happy Couple</h2>
+        <h2>Mempelai</h2>
         <div class="couple-photos">
             <div class="photo-circle">
-                <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=200&q=80" alt="Bride Sarah smiling" />
+                <img src="bride-photo.jpg" alt="Putri Ayu Setyowati, S.Pd">
+                <h3>Putri Ayu Setyowati, S.Pd</h3>
+                <p>Putri dari Bpk. Setyo Widodo & Ibu Sri Wahyuni</p>
             </div>
             <div class="photo-circle">
-                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=80" alt="Groom John smiling" />
+                <img src="groom-photo.jpg" alt="Putra Bagus Prakoso, S.T">
+                <h3>Putra Bagus Prakoso, S.T</h3>
+                <p>Putra dari Bpk. Bambang Sutrisno & Ibu Endang Susilowati</p>
             </div>
         </div>
-        <p>Join us in celebrating our love story</p>
+    </section>
+
+    <section class="doa-section">
+        <h2>Doa Pernikahan</h2>
+        <p>"Baarakallahu laka wa baaraka 'alaika wa jama'a bainakumaa fii khair"</p>
+        <p>"Semoga Allah memberkahimu dalam segala hal dan mempersatukan kalian berdua dalam kebaikan"</p>
     </section>
 
     <section class="details-section">
         <div class="details-card">
-            <h2>Wedding Details</h2>
-            <p>December 31, 2024</p>
-            <p>4:00 PM</p>
-            <p>Grand Ballroom, Luxury Hotel</p>
-            <p>123 Wedding Street, City</p>
+            <h2>Jadwal Acara</h2>
+            
+            <div class="akad-details">
+                <h3>Akad Nikah</h3>
+                <p>31 Desember 2024</p>
+                <p>08:00 WIB</p>
+                <p>Masjid Agung Jawa Tengah</p>
+                <p>Jl. Gajah Raya, Semarang</p>
+            </div>
+
+            <div class="resepsi-details">
+                <h3>Resepsi</h3>
+                <p>31 Desember 2024</p>
+                <p>11:00 - 14:00 WIB</p>
+                <p>Ballroom Hotel Tentrem</p>
+                <p>Jl. Gajahmada No. 123, Semarang</p>
+            </div>
             
             <div class="countdown">
                 <div class="countdown-item">
                     <h3 id="days">00</h3>
-                    <p>Days</p>
+                    <p>Hari</p>
                 </div>
                 <div class="countdown-item">
                     <h3 id="hours">00</h3>
-                    <p>Hours</p>
+                    <p>Jam</p>
                 </div>
                 <div class="countdown-item">
                     <h3 id="minutes">00</h3>
-                    <p>Minutes</p>
+                    <p>Menit</p>
                 </div>
                 <div class="countdown-item">
                     <h3 id="seconds">00</h3>
-                    <p>Seconds</p>
+                    <p>Detik</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="rsvp-section">
-        <h2>RSVP</h2>
-        <div class="rsvp-form">
-            <form>
-                <input type="text" placeholder="Your Name" required />
-                <input type="email" placeholder="Your Email" required />
-                <select required>
-                    <option value="">Will you attend?</option>
-                    <option value="yes">Yes, I will attend</option>
-                    <option value="no">Sorry, I can't make it</option>
-                </select>
-                <textarea placeholder="Leave a message for the couple"></textarea>
-                <button type="submit">Send RSVP</button>
-            </form>
+    <section class="gallery-section">
+        <h2>Galeri Prewedding</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="prewed1.jpg" alt="Prewedding 1">
+            </div>
+            <div class="gallery-item">
+                <img src="prewed2.jpg" alt="Prewedding 2">
+            </div>
+            <div class="gallery-item">
+                <img src="prewed3.jpg" alt="Prewedding 3">
+            </div>
+            <div class="gallery-item">
+                <img src="prewed4.jpg" alt="Prewedding 4">
+            </div>
+        </div>
+    </section>
+
+    <section class="gift-section">
+        <h2>Wedding Gift</h2>
+        <p>Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Dan jika memberi adalah ungkapan tanda kasih Anda, Anda dapat memberi kado secara cashless.</p>
+        
+        <div class="bank-details">
+            <div class="bank-card">
+                <h3>BCA</h3>
+                <p>1234567890</p>
+                <p>a.n. Putri Ayu Setyowati</p>
+            </div>
+            <div class="bank-card">
+                <h3>Mandiri</h3>
+                <p>0987654321</p>
+                <p>a.n. Putra Bagus Prakoso</p>
+            </div>
         </div>
     </section>
 
     <script>
         // Countdown Timer
         function updateCountdown() {
-            const weddingDate = new Date('December 31, 2024 16:00:00').getTime();
+            const weddingDate = new Date('December 31, 2024 08:00:00').getTime();
             const now = new Date().getTime();
-            let distance = weddingDate - now;
-
-            if (distance < 0) {
-                distance = 0; // Stop countdown after wedding date
-            }
+            const distance = weddingDate - now;
 
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            document.getElementById('days').innerHTML = days.toString().padStart(2, '0');
-            document.getElementById('hours').innerHTML = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').innerHTML = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').innerHTML = seconds.toString().padStart(2, '0');
+            document.getElementById('days').innerHTML = days;
+            document.getElementById('hours').innerHTML = hours;
+            document.getElementById('minutes').innerHTML = minutes;
+            document.getElementById('seconds').innerHTML = seconds;
         }
 
         setInterval(updateCountdown, 1000);
         updateCountdown();
+
+        // Music Control
+        const music = document.getElementById('bg-music');
+        let isPlaying = false;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                music.pause();
+            } else {
+                music.play();
+            }
+            isPlaying = !isPlaying;
+        }
+
+        // Start music on first interaction
+        document.body.addEventListener('click', function() {
+            if (!isPlaying) {
+                music.play();
+                isPlaying = true;
+            }
+        }, { once: true });
     </script>
 </body>
 </html>
